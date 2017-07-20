@@ -210,7 +210,7 @@ public class cCharacterInformation : MonoBehaviour {
     {
         for (int i = 0; i < cSkillDataBase.Instance.m_dictionarySkillDataBase.Count; i++)
         {
-            cSkillInformation skill = new cSkillInformation();
+			cSkillInformation skill = new cSkillInformation();
             skill = cSkillDataBase.Instance.m_dictionarySkillDataBase[i - 1];
             m_dicSkills.Add(skill.m_nIdNumber, skill);
         }
@@ -218,7 +218,7 @@ public class cCharacterInformation : MonoBehaviour {
 
     private string IsSkillIn(int index, int step, Information.eClick mouse)
     {
-        cSkillInformation skill = null;
+		cSkillInformation skill = null;
 
         switch (index)
         {
@@ -233,12 +233,7 @@ public class cCharacterInformation : MonoBehaviour {
                 break;
         }
 
-        if(skill == null)
-        {
-            return "없음";
-        }
-        else
-            return skill.name;
+        return skill.m_sName;
     }
 
     #endregion
