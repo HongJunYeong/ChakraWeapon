@@ -36,12 +36,7 @@ public class cCharacterController : MonoBehaviour {
 
     #endregion
 
-
     #region 콜백 메소드
-
-    void Awake()
-    {
-    }
 
     // Use this for initialization
     void Start () {
@@ -52,22 +47,18 @@ public class cCharacterController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update ()
-    { 
-        //if(Input.GetMouseButton(0))
+    {
+        //if (Input.GetMouseButton(0))
         //{
         //    m_anim.SetBool("MoveToIdle", true);
         //    m_anim.SetTrigger("MeleeBasic");
         //    m_anim.SetBool("MeleeBasicCombo", true);
-            
         //}
         //else
         //{
         //    m_anim.SetBool("MeleeBasicCombo", false);
-
         //}
-    
-        //스턴일 때 움직이지 못하게 
-        //if (gameObject.GetComponent<cBuffDebuffProgress>().m_eBuffDebuffState == Information.eBuffDebuff.STUN) return;
+
 
         Move();
         Rotate();

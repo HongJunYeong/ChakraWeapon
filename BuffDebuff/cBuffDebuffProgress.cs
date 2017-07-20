@@ -39,7 +39,6 @@ public class cBuffDebuffProgress : MonoBehaviour
         m_eBuffDebuffState |= enumName;
     }
 
-
     /// <summary>
     /// 02. 시간 감소 맟 시간 = 0 일 때 상태제거하는 메소드
     /// </summary>
