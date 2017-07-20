@@ -11,7 +11,7 @@ public class cCharacterInformation : MonoBehaviour {
         {
             if (m_sInstance == null)
             {
-                GameObject newObject = new GameObject("_cCharacter");
+                GameObject newObject = new GameObject("CharacterInformation");
                 m_sInstance = newObject.AddComponent<cCharacterInformation>();
             }
             return m_sInstance;
@@ -27,7 +27,8 @@ public class cCharacterInformation : MonoBehaviour {
     public Information.eQuestCondition m_eQuestCondition;                               //현재 퀘스트 상태
                                                                                         //public Information.eBuffDebuff m_eBuffDebuffState;                                  //버프, 디버프 상태 (비트연산)
 
-
+    public Dictionary<int, cItemInformation> m_dicItem;                                 //가지고 있는 아이템 목록
+    public Dictionary<int, cItemInformation> m_dicInstallItem;                          //장착중인 아이템 목록
 
     public Dictionary<int, cSkillInformation> m_dicSkills;                              //획득한 전체 스킬 목록
     public List<Dictionary<Information.eClick, cSkillInformation>> m_listDicMeleeSkillSlot;        //근접스킬 좌우클릭 장착 정보 (index of list:n단계, key:좌우클릭, value:스킬)
