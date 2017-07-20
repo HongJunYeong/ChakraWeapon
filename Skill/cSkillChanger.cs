@@ -27,19 +27,19 @@ public class cSkillChanger : MonoBehaviour, IPointerClickHandler
 		print(m_nSkillIdNumber + " : " + m_eClickedButton.ToString());
 		if(m_eClickedButton == Information.eClick.NONE) return;
 
-		cSkill skill = cCharacterInformation.Instance.m_dicSkills[m_nSkillIdNumber];
+        cSkillInformation skill = cCharacterInformation.Instance.m_dicSkills[m_nSkillIdNumber];
 
 		if (skill != null)
 		{
-			print(skill.m_cSkillInformation.m_nIdNumber);
+			print(skill.m_nIdNumber);
 			print("스킬없어");
 			m_eClickedButton = Information.eClick.NONE;
 			return;
 		}
 
-		Information.eSkillType nSkillType = skill.m_cSkillInformation.m_eType;
-		int nSkillStep = skill.m_cSkillInformation.m_nChainLevel;
-		List<Dictionary<Information.eClick, cSkill>> listDicSkillTree = null;
+		Information.eSkillType nSkillType = skill.m_eType;
+		int nSkillStep = skill.m_nChainLevel;
+		List<Dictionary<Information.eClick, cSkillInformation>> listDicSkillTree = null;
 
 		// 스킬트리가 선택되는 부분
 		switch (nSkillType)

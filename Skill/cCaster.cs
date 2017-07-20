@@ -70,8 +70,8 @@ public class cCaster : MonoBehaviour {
 	/// </summary>
 	public void CastSkill()
 	{
-		// >> 스킬 선택하는 부분
-		cSkill cCurrentSkill = null;
+        // >> 스킬 선택하는 부분
+        cSkillInformation cCurrentSkill = null;
 		if(Input.GetMouseButtonDown(0))
 		{
 			cCurrentSkill = cCharacterInformation.Instance.m_dicCurrentSkillSlot[Information.eClick.L_CLICK];
@@ -87,7 +87,7 @@ public class cCaster : MonoBehaviour {
 
 		// >> 스킬 시전 가능여부 검사하는 부분
 		if (cCurrentSkill == null) return;
-		if (cCharacterInformation.Instance.m_nChkra < cCurrentSkill.m_cSkillInformation.m_nChakraCost)
+		if (cCharacterInformation.Instance.m_nChkra < cCurrentSkill.m_nChakraCost)
 		{
 			Debug.Log("차크라가 부족합니다.");
 			return;
@@ -96,10 +96,10 @@ public class cCaster : MonoBehaviour {
 
 
 		// >> 스킬 실제 시전하는 부분
-		if(cCurrentSkill.m_cSkillInformation.m_nIdNumber == -1) StartUsingSkill();
+		if(cCurrentSkill.m_nIdNumber == -1) StartUsingSkill();
 		else
 		{
-			m_arraySkill[cCurrentSkill.m_cSkillInformation.m_nIdNumber].gameObject.SetActive(true);
+			m_arraySkill[cCurrentSkill.m_nIdNumber].gameObject.SetActive(true);
 		}		
 		// << 
 
@@ -107,16 +107,16 @@ public class cCaster : MonoBehaviour {
 
 		// >> 스킬 사용시 공통적으로 변경되는 정보들
 		// 일반공격/스킬사용 버튼 중 일반공격 눌렀을 경우
-		if (cCurrentSkill.m_cSkillInformation.m_nIdNumber == 0 ||
-			cCurrentSkill.m_cSkillInformation.m_nIdNumber == 15 ||
-			cCurrentSkill.m_cSkillInformation.m_nIdNumber == 30)
+		if (cCurrentSkill.m_nIdNumber == 0 ||
+			cCurrentSkill.m_nIdNumber == 15 ||
+			cCurrentSkill.m_nIdNumber == 30)
 		{
 			
 		}
 		// 일반공격/스킬사용 버튼 중 스킬사용 눌렀을 경우
-		else if (cCurrentSkill.m_cSkillInformation.m_nIdNumber == -1)
+		else if (cCurrentSkill.m_nIdNumber == -1)
 		{
-			switch(cCharacterInformation.Instance.m_dicCurrentSkillSlot[Information.eClick.L_CLICK].m_cSkillInformation.m_eType)
+			switch(cCharacterInformation.Instance.m_dicCurrentSkillSlot[Information.eClick.L_CLICK].m_eType)
 			{
 				case Information.eSkillType.MELEE:
                     cCharacterInformation.Instance.m_nMeleeSkillComboStep += 1;				
@@ -132,7 +132,7 @@ public class cCaster : MonoBehaviour {
 		//그 외
 		else
 		{
-			switch (cCurrentSkill.m_cSkillInformation.m_eType)
+			switch (cCurrentSkill.m_eType)
 			{
 				case Information.eSkillType.MELEE:
                     cCharacterInformation.Instance.m_nMeleeSkillComboStep += 1;

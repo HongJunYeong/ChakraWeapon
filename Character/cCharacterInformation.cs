@@ -29,11 +29,11 @@ public class cCharacterInformation : MonoBehaviour {
 
 
 
-    public Dictionary<int, cSkill> m_dicSkills;                              //획득한 전체 스킬 목록
-    public List<Dictionary<Information.eClick, cSkill>> m_listDicMeleeSkillSlot;        //근접스킬 좌우클릭 장착 정보 (index of list:n단계, key:좌우클릭, value:스킬)
-    public List<Dictionary<Information.eClick, cSkill>> m_listDicRangeSkillSlot;        //원거리스킬 좌우클릭 장착 정보(index of list:n단계, key:좌우클릭, value:스킬)
-    public List<Dictionary<Information.eClick, cSkill>> m_listDicOtherSkillSlot;        //보조스킬 좌우클릭 장착 정보(index of list:n단계, key:좌우클릭, value:스킬)
-    public Dictionary<Information.eClick, cSkill> m_dicCurrentSkillSlot;				//현재스킬 좌우클릭 장착 정보(key:좌우클릭, value:스킬)
+    public Dictionary<int, cSkillInformation> m_dicSkills;                              //획득한 전체 스킬 목록
+    public List<Dictionary<Information.eClick, cSkillInformation>> m_listDicMeleeSkillSlot;        //근접스킬 좌우클릭 장착 정보 (index of list:n단계, key:좌우클릭, value:스킬)
+    public List<Dictionary<Information.eClick, cSkillInformation>> m_listDicRangeSkillSlot;        //원거리스킬 좌우클릭 장착 정보(index of list:n단계, key:좌우클릭, value:스킬)
+    public List<Dictionary<Information.eClick, cSkillInformation>> m_listDicOtherSkillSlot;        //보조스킬 좌우클릭 장착 정보(index of list:n단계, key:좌우클릭, value:스킬)
+    public Dictionary<Information.eClick, cSkillInformation> m_dicCurrentSkillSlot;				//현재스킬 좌우클릭 장착 정보(key:좌우클릭, value:스킬)
 
     //public Dictionary<int, cItem>
 
@@ -98,30 +98,30 @@ public class cCharacterInformation : MonoBehaviour {
     private void InitializeSkillSlots()
     {
         // >> 동적 할당
-        m_dicSkills = new Dictionary<int, cSkill>();
+        m_dicSkills = new Dictionary<int, cSkillInformation>();
 
-        m_listDicMeleeSkillSlot = new List<Dictionary<Information.eClick, cSkill>>();
+        m_listDicMeleeSkillSlot = new List<Dictionary<Information.eClick, cSkillInformation>>();
         for (int i = 0; i < 4; i++)
         {
-            Dictionary<Information.eClick, cSkill> newDic = new Dictionary<Information.eClick, cSkill>();
+            Dictionary<Information.eClick, cSkillInformation> newDic = new Dictionary<Information.eClick, cSkillInformation>();
             m_listDicMeleeSkillSlot.Add(newDic);
         }
 
-        m_listDicRangeSkillSlot = new List<Dictionary<Information.eClick, cSkill>>();
+        m_listDicRangeSkillSlot = new List<Dictionary<Information.eClick, cSkillInformation>>();
         for (int i = 0; i < 4; i++)
         {
-            Dictionary<Information.eClick, cSkill> newDic = new Dictionary<Information.eClick, cSkill>();
+            Dictionary<Information.eClick, cSkillInformation> newDic = new Dictionary<Information.eClick, cSkillInformation>();
             m_listDicRangeSkillSlot.Add(newDic);
         }
 
-        m_listDicOtherSkillSlot = new List<Dictionary<Information.eClick, cSkill>>();
+        m_listDicOtherSkillSlot = new List<Dictionary<Information.eClick, cSkillInformation>>();
         for (int i = 0; i < 4; i++)
         {
-            Dictionary<Information.eClick, cSkill> newDic = new Dictionary<Information.eClick, cSkill>();
+            Dictionary<Information.eClick, cSkillInformation> newDic = new Dictionary<Information.eClick, cSkillInformation>();
             m_listDicOtherSkillSlot.Add(newDic);
         }
 
-        m_dicCurrentSkillSlot = new Dictionary<Information.eClick, cSkill>();
+        m_dicCurrentSkillSlot = new Dictionary<Information.eClick, cSkillInformation>();
         // << 
 
 
@@ -176,8 +176,8 @@ public class cCharacterInformation : MonoBehaviour {
             "\nm_listDicMeleeSkillSlot : " + m_listDicMeleeSkillSlot.Count +
             "\nm_listDicRangeSkillSlot : " + m_listDicRangeSkillSlot.Count +
             "\nm_listDicOtherSkillSlot : " + m_listDicOtherSkillSlot.Count +
-            "\nm_dicCurrentSkillSlot : " + m_dicCurrentSkillSlot[Information.eClick.L_CLICK].m_cSkillInformation.m_sName + " : " + 
-            m_dicCurrentSkillSlot[Information.eClick.R_CLICK].m_cSkillInformation.m_sName +
+            "\nm_dicCurrentSkillSlot : " + m_dicCurrentSkillSlot[Information.eClick.L_CLICK].m_sName + " : " + 
+            m_dicCurrentSkillSlot[Information.eClick.R_CLICK].m_sName +
             "\nm_nChkra : " + m_nChkra +
             "\nm_nTotalComboNum : " + m_nTotalComboNum;
         GUI.TextArea(new Rect(0, 0, 150, 250), text);
@@ -208,15 +208,15 @@ public class cCharacterInformation : MonoBehaviour {
     {
         for (int i = 0; i < cSkillDataBase.Instance.m_dictionarySkillDataBase.Count; i++)
         {
-            cSkill skill = new cSkill();
-            skill.m_cSkillInformation = cSkillDataBase.Instance.m_dictionarySkillDataBase[i - 1];
-            m_dicSkills.Add(skill.m_cSkillInformation.m_nIdNumber, skill);
+            cSkillInformation skill = new cSkillInformation();
+            skill = cSkillDataBase.Instance.m_dictionarySkillDataBase[i - 1];
+            m_dicSkills.Add(skill.m_nIdNumber, skill);
         }
     }
 
     private string IsSkillIn(int index, int step, Information.eClick mouse)
     {
-        cSkill skill = null;
+        cSkillInformation skill = null;
 
         switch (index)
         {
@@ -231,7 +231,12 @@ public class cCharacterInformation : MonoBehaviour {
                 break;
         }
 
-        return skill.m_cSkillInformation.name;
+        if(skill == null)
+        {
+            return "없음";
+        }
+        else
+            return skill.name;
     }
 
     #endregion

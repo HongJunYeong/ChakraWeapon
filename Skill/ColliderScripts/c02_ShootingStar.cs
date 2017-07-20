@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class c02_ShootingStar : cSkill {
+public class c02_ShootingStar : MonoBehaviour {
 
     //토탈 콤보 증가, 차크라 소모는 cCaster에서 함.
 
@@ -20,8 +20,7 @@ public class c02_ShootingStar : cSkill {
         m_vBasicPt = gameObject.transform.position;
         m_quaBasicQuaternion = gameObject.transform.rotation;
 
-        //공통 변수 초기화
-        FirstAwake(m_nSkillIndex);
+
     }
 
     void Update()
@@ -33,7 +32,7 @@ public class c02_ShootingStar : cSkill {
     void OnCollisionEnter(Collision coll)
     {
 
-        GeneralCollision();
+
 
         //디버프 없음
 

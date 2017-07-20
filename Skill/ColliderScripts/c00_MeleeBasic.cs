@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class c00_MeleeBasic : cSkill {
+public class c00_MeleeBasic : MonoBehaviour {
 
     //토탈 콤보 증가, 차크라 소모는 cCaster에서 함.
 
@@ -14,14 +14,17 @@ public class c00_MeleeBasic : cSkill {
 
     #endregion
 
+    #region public
+
+    public cSkillInformation m_cSkillInformation;
+
+    #endregion
+
     void Awake()
     {
         //첫 위치, 회전값 저장
         m_vBasicPt = gameObject.transform.position;
         m_quaBasicQuaternion = gameObject.transform.rotation;
-
-        //공통 변수 초기화
-        FirstAwake(m_nSkillIndex);
     }
 
     void Update()
@@ -33,7 +36,6 @@ public class c00_MeleeBasic : cSkill {
     void OnCollisionEnter(Collision coll)
     {
 
-        GeneralCollision();
 
         //디버프 없음
 
