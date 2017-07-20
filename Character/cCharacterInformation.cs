@@ -11,7 +11,7 @@ public class cCharacterInformation : MonoBehaviour {
         {
             if (m_sInstance == null)
             {
-                GameObject newObject = new GameObject("_cCharacter");
+                GameObject newObject = new GameObject("CharacterInformation");
                 m_sInstance = newObject.AddComponent<cCharacterInformation>();
             }
             return m_sInstance;
@@ -27,13 +27,15 @@ public class cCharacterInformation : MonoBehaviour {
     public Information.eQuestCondition m_eQuestCondition;                               //현재 퀘스트 상태
                                                                                         //public Information.eBuffDebuff m_eBuffDebuffState;                                  //버프, 디버프 상태 (비트연산)
 
-
+    public Dictionary<int, cItemInformation> m_dicItem;                                 //가지고 있는 아이템 목록
+    public Dictionary<int, cItemInformation> m_dicInstallItem;                          //장착중인 아이템 목록
 
     public Dictionary<int, cSkillInformation> m_dicSkills;                              //획득한 전체 스킬 목록
     public List<Dictionary<Information.eClick, cSkillInformation>> m_listDicMeleeSkillSlot;        //근접스킬 좌우클릭 장착 정보 (index of list:n단계, key:좌우클릭, value:스킬)
     public List<Dictionary<Information.eClick, cSkillInformation>> m_listDicRangeSkillSlot;        //원거리스킬 좌우클릭 장착 정보(index of list:n단계, key:좌우클릭, value:스킬)
     public List<Dictionary<Information.eClick, cSkillInformation>> m_listDicOtherSkillSlot;        //보조스킬 좌우클릭 장착 정보(index of list:n단계, key:좌우클릭, value:스킬)
     public Dictionary<Information.eClick, cSkillInformation> m_dicCurrentSkillSlot;				//현재스킬 좌우클릭 장착 정보(key:좌우클릭, value:스킬)
+
 
     //public Dictionary<int, cItem>
 
@@ -208,7 +210,7 @@ public class cCharacterInformation : MonoBehaviour {
     {
         for (int i = 0; i < cSkillDataBase.Instance.m_dictionarySkillDataBase.Count; i++)
         {
-            cSkillInformation skill = new cSkillInformation();
+			cSkillInformation skill = new cSkillInformation();
             skill = cSkillDataBase.Instance.m_dictionarySkillDataBase[i - 1];
             m_dicSkills.Add(skill.m_nIdNumber, skill);
         }
@@ -216,7 +218,7 @@ public class cCharacterInformation : MonoBehaviour {
 
     private string IsSkillIn(int index, int step, Information.eClick mouse)
     {
-        cSkillInformation skill = null;
+		cSkillInformation skill = null;
 
         switch (index)
         {
@@ -231,12 +233,7 @@ public class cCharacterInformation : MonoBehaviour {
                 break;
         }
 
-        if(skill == null)
-        {
-            return "없음";
-        }
-        else
-            return skill.name;
+        return skill.m_sName;
     }
 
     #endregion

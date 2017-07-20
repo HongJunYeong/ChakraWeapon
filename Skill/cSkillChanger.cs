@@ -29,14 +29,6 @@ public class cSkillChanger : MonoBehaviour, IPointerClickHandler
 
         cSkillInformation skill = cCharacterInformation.Instance.m_dicSkills[m_nSkillIdNumber];
 
-		if (skill != null)
-		{
-			print(skill.m_nIdNumber);
-			print("스킬없어");
-			m_eClickedButton = Information.eClick.NONE;
-			return;
-		}
-
 		Information.eSkillType nSkillType = skill.m_eType;
 		int nSkillStep = skill.m_nChainLevel;
 		List<Dictionary<Information.eClick, cSkillInformation>> listDicSkillTree = null;
