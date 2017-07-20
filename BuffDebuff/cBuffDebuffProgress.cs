@@ -16,6 +16,9 @@ public class cBuffDebuffProgress : MonoBehaviour
     {
         //시간 감소 및 그에 따른 상태 체크
         CheckCountState();
+
+        //버프, 디버프 상태에따른 스탯 변화
+        CheckBuffDebuffState();
     }
 
     /// <summary>
@@ -33,9 +36,9 @@ public class cBuffDebuffProgress : MonoBehaviour
             return;
         }
 
-        cBuffDebuffInfo blindness = new cBuffDebuffInfo();
-        blindness.Init(obj, enumName, totalTime);
-        m_listBuffDebuff.Add(blindness);
+        cBuffDebuffInfo buffDebuff = new cBuffDebuffInfo();
+        buffDebuff.Init(obj, enumName, totalTime);
+        m_listBuffDebuff.Add(buffDebuff);
         m_eBuffDebuffState |= enumName;
     }
 
@@ -80,6 +83,17 @@ public class cBuffDebuffProgress : MonoBehaviour
             m_listBuffDebuff[i].m_fCurTime = totalTime;
         }
     }
+
+    
+    void CheckBuffDebuffState()
+    {
+        switch(m_eBuffDebuffState)
+        {
+            default:
+                break;
+        }
+    }
+
 }
 
 

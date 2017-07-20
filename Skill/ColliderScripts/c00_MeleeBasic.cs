@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 일반공격 클래스
+/// </summary>
 public class c00_MeleeBasic : MonoBehaviour {
 
     //토탈 콤보 증가, 차크라 소모, 애니메이션 시작은 cCaster에서 함.
