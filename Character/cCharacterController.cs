@@ -5,8 +5,12 @@ using UnityEngine;
 public class cCharacterController : MonoBehaviour {
     #region private 필드
 
+    public GameObject m_objSword;
+
     private cBuffDebuffProgress m_cBuffDebuffProgress;      //캐릭터 버프,디버프 스크립트
     private CharacterController m_chatacterController;      //캐릭터 컨트롤러
+
+
     private Vector3 m_vecMoveDir;                           //캐릭터가 이동할 방향
 
     private float m_fHorizontal;                            // W,S 키가 눌렸을때 -1 ~ 1 까지의 값을 받아올 변수
@@ -48,16 +52,16 @@ public class cCharacterController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        //if (Input.GetMouseButton(0))
-        //{
-        //    m_anim.SetBool("MoveToIdle", true);
-        //    m_anim.SetTrigger("MeleeBasic");
-        //    m_anim.SetBool("MeleeBasicCombo", true);
-        //}
-        //else
-        //{
-        //    m_anim.SetBool("MeleeBasicCombo", false);
-        //}
+        if (Input.GetMouseButton(0))
+        {
+            m_anim.SetBool("MoveToIdle", true);
+            m_anim.SetTrigger("MeleeBasic");
+            m_anim.SetBool("MeleeBasicCombo", true);
+        }
+        else
+        {
+            m_anim.SetBool("MeleeBasicCombo", false);
+        }
 
 
         Move();
