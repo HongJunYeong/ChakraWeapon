@@ -9,6 +9,7 @@ public class cCaster : MonoBehaviour {
     public GameObject m_objRushCollider;
     public Canvas m_canvasSkillTree;
     public GameObject[] m_arraySkill;
+	public Animator m_animatorAnim;
 
     #endregion
 
@@ -37,7 +38,7 @@ public class cCaster : MonoBehaviour {
 
 	private void LateUpdate()
 	{
-		
+
 	}
 
     #region 스킬 발동 조건 구현
@@ -52,16 +53,19 @@ public class cCaster : MonoBehaviour {
 		{
 			nComboStep = cCharacterInformation.Instance.m_nMeleeSkillComboStep;
             cCharacterInformation.Instance.m_dicCurrentSkillSlot = cCharacterInformation.Instance.m_listDicMeleeSkillSlot[nComboStep];
+			cCharacterInformation.Instance.m_nCurrentSkillSlotIndex = 1;
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
 			nComboStep = cCharacterInformation.Instance.m_nRangeSkillComboStep;
             cCharacterInformation.Instance.m_dicCurrentSkillSlot = cCharacterInformation.Instance.m_listDicRangeSkillSlot[nComboStep];
+			cCharacterInformation.Instance.m_nCurrentSkillSlotIndex = 2;
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
 			nComboStep = cCharacterInformation.Instance.m_nOtherSkillComboStep;
             cCharacterInformation.Instance.m_dicCurrentSkillSlot = cCharacterInformation.Instance.m_listDicOtherSkillSlot[nComboStep];
+			cCharacterInformation.Instance.m_nCurrentSkillSlotIndex = 3;
 		}
 	}
 
@@ -96,7 +100,8 @@ public class cCaster : MonoBehaviour {
 
 
 		// >> 스킬 실제 시전하는 부분
-		if(cCurrentSkill.m_nIdNumber == -1) StartUsingSkill();
+		if (cCurrentSkill.m_nIdNumber == -1 && cCharacterInformation.Instance.m_nCurrentSkillSlotIndex != 0) return;
+		if (cCurrentSkill.m_nIdNumber == -1) StartUsingSkill();
 		else
 		{
 			m_arraySkill[cCurrentSkill.m_nIdNumber].gameObject.SetActive(true);
@@ -165,7 +170,14 @@ public class cCaster : MonoBehaviour {
 
 	}
 
-    #endregion
+	/// <summary>
+	/// 스킬별 애니메이션을 시작시킨다.
+	/// </summary>
+	private void StartAnimation()
+	{
+		
+	}
 
-   
+	#endregion
+
 }

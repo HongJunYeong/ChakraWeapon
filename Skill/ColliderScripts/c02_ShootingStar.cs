@@ -9,34 +9,55 @@ public class c02_ShootingStar : MonoBehaviour {
     #region 변수
     private Vector3 m_vBasicPt;                                //첫 위치값 저장
     private Quaternion m_quaBasicQuaternion;                   //첫 회전값 저장
-    private const int m_nSkillIndex = 2;                       //데이터 베이스 로드하기 위한 스킬 넘버 
+<<<<<<< HEAD
+	private cSkillInformation m_cSkillInformation = 
+		cSkillDataBase.Instance.m_dictionarySkillDataBase[2];	// 스킬 정보 저장
+	private const int m_nSkillIndex = 2;                       //데이터 베이스 로드하기 위한 스킬 넘버 
+=======
+    private const int m_nSkillIndex = 0;                       //데이터 베이스 로드하기 위한 스킬 넘버 
+>>>>>>> 676fd1aaf03ec4be71e41f06c109812a752ae29b
     private bool m_isActivate = false;                         //다시 액티베이트 됐을 때 한번만 실행되게 하기 위함.
+
+	#endregion
+
+<<<<<<< HEAD
+	#region public
+	public ParticleSystem m_particleStart;
+	public ParticleSystem m_particleEnd;
+	#endregion
+
+	void Awake()
+=======
+    #region public
+
+    public cSkillInformation m_cSkillInformation;              //스킬데이터 베이스 얕은복사
 
     #endregion
 
     void Awake()
+>>>>>>> 676fd1aaf03ec4be71e41f06c109812a752ae29b
     {
         //첫 위치, 회전값 저장
         m_vBasicPt = gameObject.transform.position;
         m_quaBasicQuaternion = gameObject.transform.rotation;
-
-
     }
 
     void Update()
     {
         //스킬 내용 구현
-        ShootingStar();
+        MeleeBasic();
     }
 
     void OnCollisionEnter(Collision coll)
     {
-
-
+        float damage = (cCharacterInformation.Instance.m_nPhysicalAtk * m_cSkillInformation.m_fDamage) +
+            (cCharacterInformation.Instance.m_nTotalComboNum * 0.05f + 1.0f);
 
         //디버프 없음
 
+
         //이펙트, 사운드 생성
+
 
         //이전상태로 돌리기
         Reset();
@@ -47,20 +68,22 @@ public class c02_ShootingStar : MonoBehaviour {
 
 
     /// <summary>
-    /// 02. 유성타 스킬 내용 구현
+    /// 00. 근거리 기본 내용 구현
     /// </summary>
-    void ShootingStar()
+    void MeleeBasic()
     {
         //한번만 실행되야 할 것들
         if (!m_isActivate)
         {
-            //애니메이션 켜기
+<<<<<<< HEAD
+			//이펙트 생성.
+			m_particleStart.gameObject.SetActive(true);
+=======
             //이펙트 생성.
-            //못움직이게 만드는거 추가해야함(캐릭터에서 수정해줘야함.)
-            //무조건 뛰게 만들기.
+>>>>>>> 676fd1aaf03ec4be71e41f06c109812a752ae29b
 
-            //애니메이션시 못움직임
-            cCharacterInformation.Instance.m_isDontMove = true;
+			//애니메이션시 못움직임
+			cCharacterInformation.Instance.m_isDontMove = true;
 
             //다시 이동속도 올리지 않기 위해 트루로.
             m_isActivate = true;
@@ -76,7 +99,24 @@ public class c02_ShootingStar : MonoBehaviour {
         gameObject.transform.position = m_vBasicPt;
         gameObject.transform.rotation = m_quaBasicQuaternion;
 
+<<<<<<< HEAD
+		//그 외 실행된 것들 돌려놓기
+		m_particleStart.gameObject.SetActive(false);
+		m_particleEnd.gameObject.SetActive(false);
+	}
+
+	void TurnOnEffect_JumpUp()
+	{
+		
+	}
+
+	void TurnOnEffect_CrushDown()
+	{
+		m_particleEnd.gameObject.SetActive(true);
+	}
+
+=======
         //그 외 실행된 것들 돌려놓기
     }
-
+>>>>>>> 676fd1aaf03ec4be71e41f06c109812a752ae29b
 }
