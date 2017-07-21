@@ -87,10 +87,9 @@ public class cCaster : MonoBehaviour {
             cCharacterInformation.Instance.m_eClick = Information.eClick.R_CLICK;
 		}
 		// << 
-
+		print(cCurrentSkill.m_sName);
 
 		// >> 스킬 시전 가능여부 검사하는 부분
-		if (cCurrentSkill == null) return;
 		if (cCharacterInformation.Instance.m_nChkra < cCurrentSkill.m_nChakraCost)
 		{
 			Debug.Log("차크라가 부족합니다.");
@@ -100,8 +99,23 @@ public class cCaster : MonoBehaviour {
 
 
 		// >> 스킬 실제 시전하는 부분
-		if (cCurrentSkill.m_nIdNumber == -1 && cCharacterInformation.Instance.m_nCurrentSkillSlotIndex != 0) return;
-		if (cCurrentSkill.m_nIdNumber == -1) StartUsingSkill();
+		print(cCurrentSkill.m_nIdNumber + "시전");
+		// 콤보가 0이 아닐때, 시전 스킬이 비어있는 경우는 종료되도록
+		if (cCurrentSkill.m_nIdNumber == -1)
+		{
+			switch(cCharacterInformation.Instance.m_nCurrentSkillSlotIndex)
+			{
+				case 1:
+					if(cCharacterInformation.Instance.m_nMeleeSkillComboStep >= 1) return;
+					break;
+				case 2:
+					if (cCharacterInformation.Instance.m_nRangeSkillComboStep >= 1) return;
+					break;
+				case 3:
+					if (cCharacterInformation.Instance.m_nOtherSkillComboStep >= 1) return;
+					break;
+			}
+		}
 		else
 		{
 			m_arraySkill[cCurrentSkill.m_nIdNumber].gameObject.SetActive(true);
@@ -162,13 +176,6 @@ public class cCaster : MonoBehaviour {
 		// <<
 	}
 
-	/// <summary>
-	/// 스킬 사용 시작하도록 함
-	/// </summary>
-	private void StartUsingSkill()
-	{
-
-	}
 
 	/// <summary>
 	/// 스킬별 애니메이션을 시작시킨다.

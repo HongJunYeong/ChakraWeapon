@@ -24,7 +24,7 @@ public class cSkillChanger : MonoBehaviour, IPointerClickHandler
 	/// </summary>
 	public void SelectSkill()
 	{
-		print(m_nSkillIdNumber + " : " + m_eClickedButton.ToString());
+		//print(m_nSkillIdNumber + " : " + m_eClickedButton.ToString());
 		if(m_eClickedButton == Information.eClick.NONE) return;
 
         cSkillInformation skill = cCharacterInformation.Instance.m_dicSkills[m_nSkillIdNumber];

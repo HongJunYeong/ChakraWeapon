@@ -31,7 +31,6 @@ public class c00_MeleeBasic : MonoBehaviour {
         print(damage);
 
         //데미지 주기
-        coll.gameObject.GetComponent<damageTest>().Damaged(damage);
 
         //디버프 없음
 
