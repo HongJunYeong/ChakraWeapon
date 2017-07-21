@@ -5,8 +5,12 @@ using UnityEngine;
 public class cCharacterController : MonoBehaviour {
     #region private 필드
 
+    public GameObject m_objSword;
+
     private cBuffDebuffProgress m_cBuffDebuffProgress;      //캐릭터 버프,디버프 스크립트
     private CharacterController m_chatacterController;      //캐릭터 컨트롤러
+
+
     private Vector3 m_vecMoveDir;                           //캐릭터가 이동할 방향
 
     private float m_fHorizontal;                            // W,S 키가 눌렸을때 -1 ~ 1 까지의 값을 받아올 변수
@@ -41,7 +45,7 @@ public class cCharacterController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         m_cBuffDebuffProgress = GetComponent<cBuffDebuffProgress>();
-        m_chatacterController = GetComponentInChildren<CharacterController>();    //스크립트 시작시 자신의 캐릭터 컴포넌트를 받아온다.
+        m_chatacterController = GetComponent<CharacterController>();    //스크립트 시작시 자신의 캐릭터 컴포넌트를 받아온다.
         m_anim = GetComponent<Animator>();
     }
 	
@@ -74,18 +78,15 @@ public class cCharacterController : MonoBehaviour {
     /// 캐릭터를 이동 시키는 메소드
     /// </summary>
     public void Move()
-    {
-
-
-        if (!m_isLand || m_isCrouch || m_isRolling || cCharacterInformation.Instance.m_isDontMove)
+	{ 
+		if (!m_isLand || m_isCrouch || m_isRolling || cCharacterInformation.Instance.m_isDontMove)
         {
             m_vecMoveDir = (transform.up * m_fGravity);
             m_chatacterController.Move(m_vecMoveDir * Time.deltaTime);
         }
-        else
+       else 
         {
-
-            m_fHorizontal = Input.GetAxis("Horizontal");                         //W,S 키의 -1 ~ 1 까지의 값을 받아온다.
+			m_fHorizontal = Input.GetAxis("Horizontal");                         //W,S 키의 -1 ~ 1 까지의 값을 받아온다.
             m_fVertical = Input.GetAxis("Vertical");                             //A,D 키의 -1 ~ 1 까지의 값을 받아온다.
 
             if (m_fHorizontal < 0)                                              //

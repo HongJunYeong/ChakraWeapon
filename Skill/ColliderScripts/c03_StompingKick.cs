@@ -59,7 +59,7 @@ public class c03_StompingKick : MonoBehaviour {
             //무조건 뛰게 만들기.
 
             //애니메이션시 못움직임
-            cCharacterInformation.Instance.m_isDontMove = true;
+            //cCharacterInformation.Instance.m_isDontMove = true;
 
             //다시 이동속도 올리지 않기 위해 트루로.
             m_isActivate = true;

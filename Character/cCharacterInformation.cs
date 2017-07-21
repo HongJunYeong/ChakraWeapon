@@ -185,22 +185,22 @@ public class cCharacterInformation : MonoBehaviour {
             "\nm_nTotalComboNum : " + m_nTotalComboNum;
         GUI.TextArea(new Rect(0, 0, 150, 250), text);
 
-        string skills = "< 근접 > \n" +
+        string skills = "< 근접 : Step - " + m_nMeleeSkillComboStep + " > \n" +
              IsSkillIn(1, 0, Information.eClick.L_CLICK) + " : " + IsSkillIn(1, 0, Information.eClick.R_CLICK) + "\n" +
              IsSkillIn(1, 1, Information.eClick.L_CLICK) + " : " + IsSkillIn(1, 1, Information.eClick.R_CLICK) + "\n" +
              IsSkillIn(1, 2, Information.eClick.L_CLICK) + " : " + IsSkillIn(1, 2, Information.eClick.R_CLICK) + "\n" +
              IsSkillIn(1, 3, Information.eClick.L_CLICK) + " : " + IsSkillIn(1, 3, Information.eClick.R_CLICK);
         GUI.TextArea(new Rect(200, 0, 150, 100), skills);
 
-        skills = "< 원거리 > \n" +
-     IsSkillIn(2, 0, Information.eClick.L_CLICK) + " : " + IsSkillIn(2, 0, Information.eClick.R_CLICK) + "\n" +
+        skills = "< 원거리 : Step - " + m_nRangeSkillComboStep + " > \n" +
+	 IsSkillIn(2, 0, Information.eClick.L_CLICK) + " : " + IsSkillIn(2, 0, Information.eClick.R_CLICK) + "\n" +
      IsSkillIn(2, 1, Information.eClick.L_CLICK) + " : " + IsSkillIn(2, 1, Information.eClick.R_CLICK) + "\n" +
      IsSkillIn(2, 2, Information.eClick.L_CLICK) + " : " + IsSkillIn(2, 2, Information.eClick.R_CLICK) + "\n" +
      IsSkillIn(2, 3, Information.eClick.L_CLICK) + " : " + IsSkillIn(2, 3, Information.eClick.R_CLICK);
         GUI.TextArea(new Rect(400, 0, 150, 100), skills);
 
-        skills = "< 보조 > \n" +
-     IsSkillIn(3, 0, Information.eClick.L_CLICK) + " : " + IsSkillIn(3, 0, Information.eClick.R_CLICK) + "\n" +
+        skills = "< 보조 : Step - " + m_nOtherSkillComboStep + " > \n" +
+	 IsSkillIn(3, 0, Information.eClick.L_CLICK) + " : " + IsSkillIn(3, 0, Information.eClick.R_CLICK) + "\n" +
      IsSkillIn(3, 1, Information.eClick.L_CLICK) + " : " + IsSkillIn(3, 1, Information.eClick.R_CLICK) + "\n" +
      IsSkillIn(3, 2, Information.eClick.L_CLICK) + " : " + IsSkillIn(3, 2, Information.eClick.R_CLICK) + "\n" +
      IsSkillIn(3, 3, Information.eClick.L_CLICK) + " : " + IsSkillIn(3, 3, Information.eClick.R_CLICK);
@@ -209,7 +209,9 @@ public class cCharacterInformation : MonoBehaviour {
 
     private void InputSkillsForTest()
     {
-        for (int i = 0; i < cSkillDataBase.Instance.m_dictionarySkillDataBase.Count; i++)
+		m_nCurrentSkillSlotIndex = 1;
+
+		for (int i = 0; i < cSkillDataBase.Instance.m_dictionarySkillDataBase.Count; i++)
         {
 			cSkillInformation skill = new cSkillInformation();
             skill = cSkillDataBase.Instance.m_dictionarySkillDataBase[i - 1];
