@@ -48,16 +48,16 @@ public class cCharacterController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        //if (Input.GetMouseButton(0))
-        //{
-        //    m_anim.SetBool("MoveToIdle", true);
-        //    m_anim.SetTrigger("MeleeBasic");
-        //    m_anim.SetBool("MeleeBasicCombo", true);
-        //}
-        //else
-        //{
-        //    m_anim.SetBool("MeleeBasicCombo", false);
-        //}
+        if (Input.GetMouseButton(0))
+        {
+            m_anim.SetBool("MoveToIdle", true);
+            m_anim.SetTrigger("MeleeBasic");
+            m_anim.SetBool("MeleeBasicCombo", true);
+        }
+        else
+        {
+            m_anim.SetBool("MeleeBasicCombo", false);
+        }
 
 
         Move();
