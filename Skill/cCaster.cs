@@ -93,7 +93,7 @@ public class cCaster : MonoBehaviour {
 		if (cCharacterInformation.Instance.m_nChkra < cCurrentSkill.m_nChakraCost)
 		{
 			Debug.Log("차크라가 부족합니다.");
-			return;
+			return; 
 		}
 		// <<
 
