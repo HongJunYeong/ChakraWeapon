@@ -34,7 +34,6 @@ public class c00_MeleeBasic : MonoBehaviour {
             ((float)cCharacterInformation.Instance.m_nTotalComboNum * 0.05f + 1.0f);
 
         //데미지 주기
-        coll.gameObject.GetComponent<damageTest>().Damaged(damage);
 
         //디버프 없음
 

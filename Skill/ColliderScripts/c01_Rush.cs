@@ -63,7 +63,7 @@ public class c01_Rush : MonoBehaviour {
             //이펙트 생성.
 
             //애니메이션시 못움직임
-            cCharacterInformation.Instance.m_isDontMove = true;
+            //cCharacterInformation.Instance.m_isDontMove = true;
 
             //다시 이동속도 올리지 않기 위해 트루로.
             m_isActivate = true;
