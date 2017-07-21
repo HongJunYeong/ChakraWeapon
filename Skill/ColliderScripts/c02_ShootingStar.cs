@@ -9,37 +9,23 @@ public class c02_ShootingStar : MonoBehaviour {
     #region 변수
     private Vector3 m_vBasicPt;                                //첫 위치값 저장
     private Quaternion m_quaBasicQuaternion;                   //첫 회전값 저장
-<<<<<<< HEAD
 	private cSkillInformation m_cSkillInformation = 
 		cSkillDataBase.Instance.m_dictionarySkillDataBase[2];	// 스킬 정보 저장
 	private const int m_nSkillIndex = 2;                       //데이터 베이스 로드하기 위한 스킬 넘버 
-=======
-    private const int m_nSkillIndex = 0;                       //데이터 베이스 로드하기 위한 스킬 넘버 
->>>>>>> 676fd1aaf03ec4be71e41f06c109812a752ae29b
+
     private bool m_isActivate = false;                         //다시 액티베이트 됐을 때 한번만 실행되게 하기 위함.
 
 	#endregion
 
-<<<<<<< HEAD
 	#region public
 	public ParticleSystem m_particleStart;
 	public ParticleSystem m_particleEnd;
 	#endregion
 
-	void Awake()
-=======
-    #region public
 
-    public cSkillInformation m_cSkillInformation;              //스킬데이터 베이스 얕은복사
-
-    #endregion
 
     void Awake()
->>>>>>> 676fd1aaf03ec4be71e41f06c109812a752ae29b
     {
-        //첫 위치, 회전값 저장
-        m_vBasicPt = gameObject.transform.position;
-        m_quaBasicQuaternion = gameObject.transform.rotation;
     }
 
     void Update()
@@ -75,12 +61,9 @@ public class c02_ShootingStar : MonoBehaviour {
         //한번만 실행되야 할 것들
         if (!m_isActivate)
         {
-<<<<<<< HEAD
 			//이펙트 생성.
 			m_particleStart.gameObject.SetActive(true);
-=======
-            //이펙트 생성.
->>>>>>> 676fd1aaf03ec4be71e41f06c109812a752ae29b
+
 
 			//애니메이션시 못움직임
 			cCharacterInformation.Instance.m_isDontMove = true;
@@ -96,10 +79,9 @@ public class c02_ShootingStar : MonoBehaviour {
     void Reset()
     {
         //포지션, 회전 돌려놓기()
-        gameObject.transform.position = m_vBasicPt;
-        gameObject.transform.rotation = m_quaBasicQuaternion;
-
-<<<<<<< HEAD
+        //gameObject.transform.position = m_vBasicPt;
+       // gameObject.transform.rotation = m_quaBasicQuaternion;
+	
 		//그 외 실행된 것들 돌려놓기
 		m_particleStart.gameObject.SetActive(false);
 		m_particleEnd.gameObject.SetActive(false);
@@ -115,8 +97,5 @@ public class c02_ShootingStar : MonoBehaviour {
 		m_particleEnd.gameObject.SetActive(true);
 	}
 
-=======
-        //그 외 실행된 것들 돌려놓기
-    }
->>>>>>> 676fd1aaf03ec4be71e41f06c109812a752ae29b
+
 }
