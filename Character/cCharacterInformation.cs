@@ -36,6 +36,7 @@ public class cCharacterInformation : MonoBehaviour {
     public List<Dictionary<Information.eClick, cSkillInformation>> m_listDicOtherSkillSlot;        //보조스킬 좌우클릭 장착 정보(index of list:n단계, key:좌우클릭, value:스킬)
     public Dictionary<Information.eClick, cSkillInformation> m_dicCurrentSkillSlot;				//현재스킬 좌우클릭 장착 정보(key:좌우클릭, value:스킬)
 
+
     //public Dictionary<int, cItem>
 
 
