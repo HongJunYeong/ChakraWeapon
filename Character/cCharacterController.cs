@@ -61,7 +61,6 @@ public class cCharacterController : MonoBehaviour {
         else
         {
             m_anim.SetBool("MeleeBasicCombo", false);
-            //m_objSword.SetActive(false);
         }
 
 

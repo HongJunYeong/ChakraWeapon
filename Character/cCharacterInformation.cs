@@ -43,6 +43,7 @@ public class cCharacterInformation : MonoBehaviour {
     public int m_nMeleeSkillComboStep;													//근접스킬 콤보 단계(1,2,3단계 중)
     public int m_nRangeSkillComboStep;													//원거리스킬 콤보 단계(1,2,3단계 중)
     public int m_nOtherSkillComboStep;                                                  //보조스킬 콤보 단계(1,2,3단계 중)
+	public int m_nCurrentSkillSlotIndex;												//현재 장착된 스킬이 근거리/원거리/보조인지를 확인시켜주는 변수
 
     public int m_nTotalComboNum;														//총콤보 수         
     public int m_nOriginHP, m_nHP;                                                      //최대체력, 현재체력

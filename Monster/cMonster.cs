@@ -13,9 +13,9 @@ public abstract class cMonster : MonoBehaviour {
     #endregion
 
     #region Protected 변수
-    //protected List<class명>                                    //버프, 디버프 상태리스트
+    //protected List<class명>                                  //버프, 디버프 상태리스트
     public Information.eElement m_eAttributes;                //개체 속성
-    public Information.eElement m_eAnimState;                 //애니메이션 상태
+    public Information.eAnimState m_eAnimState;                 //애니메이션 상태
    
     public int m_nOriginHP, m_nHP;                            //최대체력, 현재체력
     public int m_nOriPhysicalAtk, m_nPhysicalAtk;             //물리공격력, 변화된 물리공격력

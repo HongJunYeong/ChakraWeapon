@@ -17,7 +17,6 @@ public class cSkillDataBase : MonoBehaviour {
 
     public Dictionary<int, cSkillInformation> m_dictionarySkillDataBase;      //스킬 데이터 베이스 
 
-    public int n;
     public static cSkillDataBase Instance
     {
         get
