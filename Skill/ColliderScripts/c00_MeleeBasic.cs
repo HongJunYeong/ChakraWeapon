@@ -7,11 +7,6 @@ using UnityEngine;
 /// </summary>
 public class c00_MeleeBasic : MonoBehaviour {
 
-    //토탈 콤보 증가, 차크라 소모, 애니메이션 시작은 cCaster에서 함.
-
-    //처리해야할것
-    //1. 데미지가 여러번 박힘 - Animator 이벤트 처리 물어보기
-
     #region 변수
 
     private cSkillInformation m_cSkillInformation;             //스킬데이터 베이스 얕은복사
@@ -33,6 +28,8 @@ public class c00_MeleeBasic : MonoBehaviour {
         float damage = ((float)cCharacterInformation.Instance.m_nPhysicalAtk * m_cSkillInformation.m_fDamage) +
             ((float)cCharacterInformation.Instance.m_nTotalComboNum * 0.05f + 1.0f);
 
+        print(damage);
+
         //데미지 주기
         coll.gameObject.GetComponent<damageTest>().Damaged(damage);
 
@@ -42,6 +39,4 @@ public class c00_MeleeBasic : MonoBehaviour {
 
         gameObject.SetActive(false);
     }
-
-
 }
